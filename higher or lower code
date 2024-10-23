@@ -50,5 +50,6 @@ class Deck:
     
     def deal(self, num_cards = 1):
         pass
-
+deck = Deck()
+deck.shuffle()
 Deck().debug_print_deck()
