@@ -34,7 +34,13 @@ class Card:
             │    {self.rank}│
             └─────┘
             """
-
+def pick_a_card(): 
+        suits = random.choices(suits) 
+        rank = random.choices(rank) 
+  
+    # returning the selected card 
+        return(f"The {rank} of {suits}") 
+    print(pick_a_card()) 
 class Deck:
 
     #Initializes a Deck object with a full deck of 52 cards.
