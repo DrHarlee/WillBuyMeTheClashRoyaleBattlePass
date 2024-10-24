@@ -25,3 +25,17 @@ while T == False:
         print("Incorrect syntax, please enter one of the options exactly as displayed")
     else:
         T = True
+
+        print(deal.self())
+        higher_lower = input("Will the next card be higher or lower? Enter Higher or Lower ")
+        if card_original > card_new:
+            if higher_lower == "Lower":
+                t = True
+                score +=1
+        elif card_original < card_new:
+            if higher_lower =="Higher":
+                t = True
+                score +=1
+        else:
+            print("Incorrect syntax, please enter one of the options exactly as displayed")
+totalscore += score
