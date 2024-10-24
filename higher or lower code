@@ -2,16 +2,17 @@ import random
 
 class Card:
     
-    #Represents a playing card with a suit and rank.
+    # Represents a playing card with a suit and rank.
     suits = ["♠", "♥", "♦", "♣"]
     ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
     face_cards = {
         "J": 10,
         "Q": 10,
         "K": 10,
-        "A": 1}
+        "A": 1  # Typically Ace can be 1 or 11 in card games
+    }
+    
     def __init__(self, suit, rank):
-
         if not (suit in Card.suits and rank in Card.ranks):
             raise ValueError("Invalid card: " + str(suit) + " " + str(rank))
 
@@ -39,11 +40,8 @@ class Card:
             └─────┘
             """
 
-  
-    # returning the selected card 
 class Deck:
-
-    #Initializes a Deck object with a full deck of 52 cards.
+    # Initializes a Deck object with a full deck of 52 cards.
     def __init__(self):
         self.cards = [Card(suit, rank) for suit in Card.suits for rank in Card.ranks]
 
@@ -54,16 +52,30 @@ class Deck:
         for card in self.cards:
             print(card.card_str())
     
-    def deal(self, num_cards = 1):
-        pass
+    def deal(self, num_cards=1):
+        dealt_cards = []
+        for _ in range(num_cards):
+            if self.cards:  # Make sure there are cards left to deal
+                dealt_cards.append(self.cards.pop())
+            else:
+                raise ValueError("No more cards in the deck to deal.")
+        return dealt_cards if num_cards > 1 else dealt_cards[0]
+
+
+
+
 deck = Deck()
 deck.shuffle()
-#ask and print new card
-ask = input("do you to see the new card \n yes/no/quit: ") 
+#main stuff
     
-if ask == "quit":
-   
+ask = input("Do you want to play the game?\n (yes/no/quit): ")
 
-    if ask == "yes":
-        print("the card is: ", self.cards ) 
-                                              
+if ask == "quit":
+            print("Thanks for playing!")
+            
+elif ask == "yes":
+            random_card = deck.deal()
+            
+            print("The card is: ", random_card.card_str())
+else:
+            print("Invalid input. Please enter yes, no, or quit.")           
