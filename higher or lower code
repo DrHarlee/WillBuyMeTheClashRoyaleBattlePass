@@ -55,15 +55,29 @@ class Deck:
             print(card.card_str())
     
     def deal(self, num_cards = 1):
-        pass
+        for _ in range(num_cards):
+            if self.cards:  # Make sure there are cards left to deal
+                dealt_cards.append(self.cards.pop())
+            else:
+                raise ValueError("No more cards in the deck to deal.")
+        return dealt_cards if num_cards > 1 else dealt_cards[0]
+
+
+
+
 deck = Deck()
 deck.shuffle()
-#ask and print new card
-ask = input("do you to see the new card \n yes/no/quit: ") 
+#main stuff
     
-if ask == "quit":
-   
+ask = input("Do you want to play the game?\n (yes/no/quit): ")
 
-    if ask == "yes":
-        print("the card is: ", self.cards ) 
+if ask == "quit":
+            print("Thanks for playing!")
+            
+elif ask == "yes":
+            random_card = deck.deal()
+            
+            print("The card is: ", random_card.card_str())
+else:
+            print("Invalid input. Please enter yes, no, or quit.")
                                               
